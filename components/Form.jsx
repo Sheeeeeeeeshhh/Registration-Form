@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { registerSchema } from "schema/formSchema";
-
 import AnimatedBG from "/components/AnimatedBG";
+
+import axios from 'axios';
+
 
 export default function Contact_us() {
   const {
@@ -16,6 +18,18 @@ export default function Contact_us() {
   });
 
   const submitForm = (data) => {
+    
+    axios.post('http://localhost:3000/', {
+      firstName: data.firstName
+    })
+    .then((response) => {
+      console.log(response)
+      
+  }) 
+  .catch((err) => {
+      console.log(err)
+  })
+    
     //dito mo ata ilalagay ung code para mapunta sa sql
     console.log(data);
 
